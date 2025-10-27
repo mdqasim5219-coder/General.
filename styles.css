@@ -753,4 +753,31 @@ nav a.active {
         border-color: #da1424;
     }
 }
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    background: #005fcc;
+    color: #fff;
+    font-size: 26px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Mobile Nav Default Hidden */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+    }
+    nav.show {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
 
