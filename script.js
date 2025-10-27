@@ -81,3 +81,8 @@ searchBtn.addEventListener("click", () => {
     alert("Searching: " + query); // Later: real results page
   }
 });
+function toggleMenu() {
+    const nav = document.querySelector("nav");
+    nav.classList.toggle("show");
+}
+
