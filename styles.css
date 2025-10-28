@@ -779,5 +779,128 @@ nav a.active {
         display: block;
     }
 }
+/* ✅ MOBILE-FIRST NAVIGATION */
+.site-header {
+  background: #005fcc;
+  color: #fff;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.site-nav {
+  display: none;
+  width: 100%;
+  background: #005fcc;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 0;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  z-index: 999;
+}
+
+.site-nav.show {
+  display: flex !important;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-list li a {
+  color: #fff;
+  padding: 12px;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  background: #0048a5;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* Search Box */
+.search-box {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box input {
+  width: 70%;
+  padding: 8px;
+}
+
+.search-btn {
+  padding: 8px;
+}
+
+/* ✅ Hamburger Button */
+.menu-toggle {
+  background: #fff;
+  border: none;
+  color: #005fcc;
+  padding: 8px 12px;
+  font-size: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* ✅ Desktop Navigation */
+@media (min-width: 900px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: auto;
+    background: none;
+    padding: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .nav-list li a {
+    padding: 5px 0;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    background: #0048a5;
+    top: 40px;
+    display: none;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .search-box {
+    margin-left: 20px;
+  }
+}
+
 
 
