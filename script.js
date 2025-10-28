@@ -85,4 +85,8 @@ function toggleMenu() {
     const nav = document.querySelector("nav");
     nav.classList.toggle("show");
 }
+function toggleMenu() {
+  document.getElementById("mainNav").classList.toggle("show");
+}
+
 
