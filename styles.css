@@ -779,6 +779,44 @@ nav a.active {
         display: block;
     }
 }
+/* Mobile Menu Default Hidden */
+.site-nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: #0057b7;
+    padding: 1rem 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+}
+
+.site-nav a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* When menu open */
+.site-nav.open {
+    display: flex;
+}
+
+/* Desktop fix */
+@media (min-width: 900px) {
+    .site-nav {
+        position: static;
+        display: flex !important;
+        flex-direction: row;
+        background: transparent;
+        width: auto;
+    }
+}
+
 
 
 
