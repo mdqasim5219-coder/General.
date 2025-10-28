@@ -1,90 +1,49 @@
-// ----------------------------
-// ✅ MOBILE NAVIGATION TOGGLE
-// ----------------------------
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
-
-menuToggle.addEventListener("click", () => {
-  mainNav.classList.toggle("active");
-  menuToggle.classList.toggle("active");
-});
-
-// Close menu when click any nav link (Mobile UX best)
-document.querySelectorAll(".site-nav a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mainNav.classList.remove("active");
-    menuToggle.classList.remove("active");
-  });
-});
-
-
-// ----------------------------
-// ✅ YEAR AUTO-UPDATE FOOTER
-// ----------------------------
-document.getElementById("year").textContent = new Date().getFullYear();
-
-
-// ----------------------------
-// ✅ LANGUAGE SWITCH SYSTEM
-// ----------------------------
-const langEn = document.getElementById("langEn");
-const langUr = document.getElementById("langUr");
-const elementsWithLang = document.querySelectorAll("[data-lang-en]");
-
-function setLanguage(lang) {
-  elementsWithLang.forEach((el) => {
-    el.innerText = el.getAttribute(`data-lang-${lang}`) || el.innerText;
-  });
-
-  // Update active button UI
-  langEn.classList.toggle("active", lang === "en");
-  langUr.classList.toggle("active", lang === "ur");
-
-  // Urdu RTL support
-  document.body.style.direction = lang === "ur" ? "rtl" : "ltr";
-}
-
-langEn.addEventListener("click", () => setLanguage("en"));
-langUr.addEventListener("click", () => setLanguage("ur"));
-
-
-// Default
-setLanguage("en");
-
-
-// ----------------------------
-// ✅ NEWS TICKER AUTO SCROLL
-// ----------------------------
-const ticker = document.getElementById("tickerInner");
-let tickerPosition = 0;
-
-function autoScrollTicker() {
-  tickerPosition += 1;
-  if (tickerPosition >= ticker.scrollWidth / 2) {
-    tickerPosition = 0;
-  }
-  ticker.style.transform = `translateX(-${tickerPosition}px)`;
-  requestAnimationFrame(autoScrollTicker);
-}
-autoScrollTicker();
-
-
-// ----------------------------
-// ✅ SEARCH BAR (Simple Example)
-// ----------------------------
-const searchInput = document.getElementById("searchInput");
-const searchBtn = document.querySelector(".search-btn");
-
-searchBtn.addEventListener("click", () => {
-  const query = searchInput.value.trim();
-  if (query) {
-    alert("Searching: " + query); // Later: real results page
-  }
-});
+// Mobile menu toggle (if needed later)
 function toggleMenu() {
-    const nav = document.querySelector("nav");
-    nav.classList.toggle("show");
+  const nav = document.getElementById('mainNav');
+  if (!nav) return;
+  nav.classList.toggle('open');
 }
+
+// Year footer auto-update (if you have #year span)
+const y = document.getElementById('year');
+if (y) y.textContent = new Date().getFullYear();
+
+// Language switch (uses elements with data-lang-en / data-lang-ur)
+const langEn = document.getElementById('langEn');
+const langUr = document.getElementById('langUr');
+const els = document.querySelectorAll('[data-lang-en]');
+function setLang(l) {
+  els.forEach(el => {
+    const text = el.getAttribute('data-lang-' + l);
+    if (text) el.innerText = text;
+  });
+  if (langEn) langEn.classList.toggle('active', l === 'en');
+  if (langUr) langUr.classList.toggle('active', l === 'ur');
+  document.documentElement.dir = (l === 'ur') ? 'rtl' : 'ltr';
+}
+if (langEn) langEn.addEventListener('click', () => setLang('en'));
+if (langUr) langUr.addEventListener('click', () => setLang('ur'));
+setLang('en');
+
+// basic ticker auto-scroll
+(function ticker() {
+  const container = document.getElementById('tickerInner') || document.querySelector('.ticker-inner');
+  if (!container) return;
+  let pos = 0;
+  function step() {
+    pos += 1;
+    if (pos >= container.scrollWidth / 2) pos = 0;
+    container.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector("nav").classList.toggle("show");
+});
+
+
 
 
 
