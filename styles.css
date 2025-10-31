@@ -617,4 +617,66 @@ a {
     transform: rotate(-45deg) translateY(-9px);
   }
 }
+/* ✅ Base menu style */
+#navMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 10px 0;
+  border-top: 2px solid #1a73e8;
+}
+
+/* Links design */
+#navMenu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+#navMenu a:hover {
+  color: #1a73e8;
+}
+
+/* ✅ Mobile menu button */
+#menuBtn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  display: none;
+  margin-left: auto;
+}
+
+/* ✅ Responsive styles */
+@media (max-width: 768px) {
+  #menuBtn {
+    display: block;
+  }
+
+  #navMenu {
+    display: none;
+    flex-wrap: wrap; /* ✅ horizontal wrapping (row form) */
+    justify-content: center;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  #navMenu.active {
+    display: flex;
+  }
+
+  #navMenu a {
+    padding: 8px 10px;
+    border-radius: 4px;
+  }
+
+  #navMenu a:hover {
+    background: #f2f2f2;
+  }
+}
+
 
