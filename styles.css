@@ -378,34 +378,126 @@ footer {
   font-size: 14px;
   margin-top: 40px;
 }
-/* ✅ Responsive Navigation */
+/* =============== GLOBAL RESET =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* =============== HEADER =============== */
+header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+/* =============== LOGO =============== */
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e60023;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =============== NAVIGATION =============== */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  background: #e60023;
+  color: #fff;
+}
+
+/* =============== DROPDOWN MENU =============== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-content a:hover {
+  background: #f8f8f8;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* =============== MOBILE FRIENDLY NAV =============== */
 @media (max-width: 768px) {
   nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: var(--white);
-    width: 100%;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 8px 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
   }
 
   nav a {
-    flex: 1 1 auto;
-    text-align: center;
+    display: inline-block;
     font-size: 14px;
-    padding: 10px 6px;
-    border-radius: 0;
-    border-right: 1px solid #eee;
+    padding: 10px;
   }
 
-  nav a:last-child {
-    border-right: none;
-  }
-
-  .menu-toggle {
-    display: none; /* hide menu button since we’re keeping inline layout */
+  .dropdown-content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 60px;
+    text-align: center;
   }
 }
-
